@@ -1,0 +1,80 @@
+
+<style>
+  #panel {
+    width: 100%;
+
+    background: blue;
+
+    min-height: 100vh;
+  }
+
+  .vertical {
+    width: 50%;
+
+    height: 100%;
+  }
+
+  .horizontal {
+    width: 100%;
+
+    height: 50%;
+  }
+</style>
+
+<div class="vertical" id="panel"></div>
+
+<script>
+  var i = 0;
+
+  var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
+  document.getElementById("panel").addEventListener("click", (e) => {
+    myFunction(e);
+  });
+
+  function myFunction(e) {
+    i++;
+    var selectClass = e.target.className;
+    // alert(selectClass);
+    var div = document.createElement("div");
+
+    if (selectClass === "horizontal") {
+
+    //   div.classList.add("vertical");
+      for (var i = 1; i >= 0; --i) {
+        div.classList.add("vertical");
+        var r = Math.floor(Math.random() * 1000000000000000);
+        div.setAttribute("id", "vert" + r);
+        randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
+        div.style.cssText =
+          "color:white;font-size:100px;display:inline-block;background-color:" +
+          randomColor;
+          document.getElementById(e.target.id).appendChild(div.cloneNode(true));
+      }
+    } else if (selectClass === "vertical") {
+        
+     
+        for (var i = 1; i >= 0; --i) {
+        div.classList.add("horizontal");
+            // document.getElementById(e.target.id).appendChild(div);
+        var r = Math.floor(Math.random() * 1000000000000000);
+        div.setAttribute("id", "horiz" + r);
+        randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
+        div.style.cssText =
+          "color:white;font-size:100px;display:inline-block;background-color:" +
+          randomColor;
+          document.getElementById(e.target.id).appendChild(div.cloneNode(true));
+      }
+    }
+    // div.setAttribute("id", "para" + i);
+    // randomColor = Math.floor(Math.random() * 16777215).toString(16);
+
+    // div.style.cssText =
+    //   "color:white;font-size:100px;display:inline-block;background-color:" +
+    //   randomColor;
+    // document.getElementById(e.target.id).appendChild(div);
+  }
+    
+</script>
